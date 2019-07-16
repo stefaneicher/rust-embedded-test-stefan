@@ -6,7 +6,7 @@
 extern crate panic_halt;
 
 use cortex_m_rt::entry;
-use cortex_m_semihosting::{debug, hprintln};
+use cortex_m_semihosting::{ hprintln};
 
 #[entry]
 fn main() -> ! {
