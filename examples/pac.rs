@@ -1,3 +1,4 @@
+//https://rust-embedded.github.io/book/start/registers.html#using-a-peripheral-access-crate-pac
 //! Prints "Hello, world!" on the host console using semihosting
 
 #![no_main]
@@ -5,24 +6,28 @@
 
 extern crate panic_halt;
 
-use cortex_m_semihosting::hprintln;
-use cortex_m::peripheral::{syst, Peripherals};
 use cortex_m_rt::entry;
+use cortex_m_semihosting::{debug, hprintln};
 
+use cortex_m::peripheral::{syst, Peripherals};
 
 #[entry]
 fn main() -> ! {
-    hprintln!("Hello, world!").unwrap();
+    hprintln!("Start").unwrap();
     let mut peripherals = Peripherals::take().unwrap();
     let mut systick = peripherals.SYST;
     systick.set_clock_source(syst::SystClkSource::Core);
     systick.set_reload(1_000);
     systick.clear_current();
     systick.enable_counter();
-    hprintln!("SysTick enabled!").unwrap();
+    hprintln!("setup systick").unwrap();
     while !systick.has_wrapped() {
-        // Loop<<
+        // Loop
+
     }
 
-    loop {}
+    hprintln!("systick wraped").unwrap();
+    loop {
+        hprintln!("loop").unwrap();
+    }
 }

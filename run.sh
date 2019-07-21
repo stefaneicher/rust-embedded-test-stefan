@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
 #open openocd in other a terminal
+cargo build
+#cargo run --example hello
+cargo run --example pac
 
-#then run
-cargo run --example hello
-
-as described in  https://rust-embedded.github.io/book/start/hardware.html at the end
+#as described in  https://rust-embedded.github.io/book/start/hardware.html at the end
