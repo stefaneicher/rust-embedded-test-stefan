@@ -20,7 +20,7 @@ extern crate panic_halt;
 use self::alloc::vec;
 use core::alloc::Layout;
 
-use alloc_cortex_m::CortexMHeap;
+//use alloc_cortex_m::CortexMHeap;
 use cortex_m::asm;
 use cortex_m_rt::entry;
 use cortex_m_semihosting::hprintln;

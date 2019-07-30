@@ -13,14 +13,14 @@ extern crate panic_halt;
 extern crate panic_abort;
 
 use cortex_m_rt::entry;
-use cortex_m_semihosting::{debug, hprintln};
+use cortex_m_semihosting::hprintln;
 
 use cortex_m::peripheral::{syst, Peripherals};
 
 #[entry]
 fn main() -> ! {
     hprintln!("Start").unwrap();
-    let mut peripherals = Peripherals::take().unwrap();
+    let peripherals = Peripherals::take().unwrap();
     let mut systick = peripherals.SYST;
     systick.set_clock_source(syst::SystClkSource::Core);
     systick.set_reload(1_0000);
@@ -29,7 +29,6 @@ fn main() -> ! {
     hprintln!("setup systick").unwrap();
     while !systick.has_wrapped() {
         // Loop
-
     }
 
     hprintln!("systick wraped").unwrap();
